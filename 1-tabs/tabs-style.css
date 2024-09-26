@@ -1,0 +1,169 @@
+/* Табы */
+.tabs {
+    display: flex;
+    align-items: start;
+}
+
+/* Секция для выравнивания на странице */
+.section {
+    width: 940px;
+    margin: 0 auto;
+}
+
+/* Стили для списка вкладок */
+.tab-header {
+    min-width: 234px;
+    list-style: none;
+    padding-left: 0;
+    display: flex;
+    flex-direction: column;
+    margin: 0;
+    margin-right: 10px;
+    box-shadow: -1px 1px 3px rgba(0, 0, 0, .2), 1px 1px 3px rgba(0, 0, 0, .2);
+}
+
+/* Стили для вкладки */
+.tab-header__item {
+    padding: 10px;
+    cursor: pointer;
+    font-size: 14px;
+    outline: 1px solid #ddd;
+}
+
+/* Стили для активной вкладки */
+.tab-header__item.active {
+    color: rgba(233, 38, 45);
+    position: relative;
+    background-color: #fff;
+    font-weight: 700;
+}
+
+/* Стиль для списка контейнеров с содержимым вкладок */
+.tab-content {
+    min-width: 700px;
+    min-height: 413px;
+    list-style: none;
+    padding: 20px 22.5px;
+    margin: 0;
+    box-shadow: -1px 1px 3px rgba(0, 0, 0, .2), 1px 1px 3px rgba(0, 0, 0, .2);
+}
+
+/* Стили для контейнера с содержимым вкладки. По умолчанию скрыт. */
+.tab-content__item {
+    display: none;
+}
+
+/* Стили для активного контейнера вкладки */
+.tab-content__item.active {
+    display: block;
+}
+
+/* Стили кнопки "Продолжить" */
+.btn-next {
+    min-width: 187px;
+    min-height: 52px;
+    display: block;
+    margin: 56px auto 26px;
+    padding: 14px 35px;
+    border: 1px solid rgba(0, 0, 0, .2);
+    border-radius: 8px;
+    background-color: rgba(255, 255, 255);
+}
+
+/* Стили для активной кнопки */
+    /* Анимация нажатия */
+.btn-next_enabled {
+    transition: 0.1s all;
+}
+
+.btn-next_enabled:active {
+    transform: scale(0.99);
+}
+
+    /* Реакция при наведении */
+.btn-next_enabled:hover {
+    background-color: rgba(0, 0, 0, .05);
+}
+
+/* Стили для неактивной кнопки */
+.btn-next_disabled {
+    background-color: rgba(28, 26, 26, .15);
+    color: black;
+}
+
+/* Нумерованный список */
+.tab-ordered-list {
+    list-style-type: none;
+    counter-reset: num;
+    padding: 0;
+    margin: 0;
+}
+
+/* Элементы нумерованного списка */
+.tab-ordered-list__item {
+    position: relative;
+    margin-bottom: 20px;
+}
+
+.tab-ordered-list__item:last-child {
+    margin: 0;
+}
+
+/* Цифры */
+.tab-ordered-list__item:before {
+    content: counter(num); 
+    counter-increment: num;
+    display: inline-block;	
+	position: relative;
+    color: rgba(233, 38, 45);
+
+}
+
+/* Загловок нумерованного списка */
+.tab-ordered-list__title {
+    display: inline-block;
+    margin: 0 0 10px;
+    padding-left: 8px;
+}
+
+.tab-ordered-list__title:last-child {
+    margin: 0;
+}
+
+/* Ненумерованный список */
+.tab-unordered-list {
+    list-style-type: none;
+    padding: 0;
+}
+
+/* Элементы ненумерованного списка */
+.tab-unordered-list__item:not(:last-child) {
+    margin: 0;
+    margin-bottom: 10px;
+}
+
+/* Шрифты */
+.tab-point {
+    padding-right: 10px;
+    font-size: 14px;
+    color: rgba(115, 190, 67);
+}
+
+    /* Обычный */
+.tab-text_normal {
+    font-size: 14px;
+    line-height: 150%;
+}
+
+    /* Жирный */
+.tab-text_bold {
+    font-size: 14px;
+    line-height: 150%;
+    font-weight: bold;
+}
+
+    /* Для кнопки */
+.btn-next-text {
+    font-size: 16px;
+    line-height: 150%;
+}

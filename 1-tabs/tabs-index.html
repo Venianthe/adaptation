@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Табы</title>
+    <link rel="stylesheet" href="./normalize.css">
+    <link rel="stylesheet" href="./tabs-style.css">
+    <script defer src="./tabs-script.js"></script>
+</head>
+<body>
+    <div class="section">
+        <!-- Заголовок табов -->
+        <h1 class="tab-title">Табы</h1>
+
+        <!-- Общий контейнер для табов -->
+        <div class="tabs">
+
+            <!--  Контейнер с вкладками   -->
+            <ul class="tab-header">
+                <li class="tab-header__item js-tab-trigger active" data-tab="1">Таб 1</li>
+                <li class="tab-header__item js-tab-trigger" data-tab="2">Таб 2</li>
+                <li class="tab-header__item js-tab-trigger" data-tab="3">Таб 3</li>
+                <li class="tab-header__item js-tab-trigger" data-tab="4">Таб 4</li>
+            </ul>
+ 
+            <!--  Контейнер с блоками, которые содержат контент вкладок   -->
+            <ul class="tab-content">
+                <li class="tab-content__item js-tab-content tab-text_normal viewed active" data-tab="1">
+                    Далеко-далеко за словесными, горами в стране гласных и согласных живут рыбные тексты.
+                </li>
+                <li class="tab-content__item js-tab-content tab-text_normal" data-tab="2">
+                    Lorem ipsum, dolor sit amet consectetur adipisicing elit. Dolorum rem laboriosam cum repudiandae natus corrupti?
+                </li>
+                <li class="tab-content__item js-tab-content" data-tab="3">
+                    <ol class="tab-ordered-list">
+                        <li class="tab-ordered-list__item">
+                            <h3 class="tab-ordered-list__title tab-text_bold">Заголовок нумерованного списка</h3>
+                            <ul class="tab-unordered-list">
+                                <li class="tab-unordered-list__item">
+                                    <span class="tab-point">–</span>
+                                    <span class="tab-text_normal">Элемент 1</span>
+                                </li>
+                                <li class="tab-unordered-list__item">
+                                    <span class="tab-point">–</span>
+                                    <span class="tab-text_normal">Элемент 2</span>
+                                </li>
+                                <li class="tab-unordered-list__item">
+                                    <span class="tab-point">–</span>
+                                    <span class="tab-text_normal">Элемент 3</span>
+                                </li>
+                            </ul>
+                        </li>
+                        <li class="tab-ordered-list__item">
+                            <h3 class="tab-ordered-list__title tab-text_bold">Заголовок нумерованного списка</h3>
+                            <ul class="tab-unordered-list">
+                                <li class="tab-unordered-list__item">
+                                    <span class="tab-point">–</span>
+                                    <span class="tab-text_normal">Элемент 1</span>
+                                </li>
+                                <li class="tab-unordered-list__item">
+                                    <span class="tab-point">–</span>
+                                    <span class="tab-text_normal">Элемент 2</span>
+                                </li>
+                                <li class="tab-unordered-list__item">
+                                    <span class="tab-point">–</span>
+                                    <span class="tab-text_normal">Элемент 3</span>
+                                </li>
+                                <li class="tab-unordered-list__item">
+                                    <span class="tab-point">–</span>
+                                    <span class="tab-text_normal">Элемент 4</span>
+                                </li>
+                            </ul>
+                        </li>
+                        <li class="tab-ordered-list__item">
+                            <h3 class="tab-ordered-list__title tab-text_bold">Заголовок нумерованного списка</h3>
+                            <ul class="tab-unordered-list">
+                                <li class="tab-unordered-list__item">
+                                    <span class="tab-point">–</span>
+                                    <span class="tab-text_normal">Элемент 1</span>
+                                </li>
+                                <li class="tab-unordered-list__item">
+                                    <span class="tab-point">–</span>
+                                    <span class="tab-text_normal">Элемент 2</span>
+                                </li>
+                                <li class="tab-unordered-list__item">
+                                    <span class="tab-point">–</span>
+                                    <span class="tab-text_normal">Элемент 3</span>
+                                </li>
+                            </ul>
+                        </li>
+                    </ol>
+                </li>
+                <li class="tab-content__item js-tab-content tab-text_normal" data-tab="4">
+                    Далеко-далеко за словесными горами. Lorem ipsum, dolor
+                </li>
+            </ul>
+        </div>
+        <button disabled class="btn-next btn-next-text btn-next_disabled">Продолжить</button>
+    </div>
+</body>
+</html>
