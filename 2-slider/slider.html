@@ -7,7 +7,7 @@
     <title>Слайдер</title>
     <link rel="stylesheet" href="./style/normalize.css">
     <link rel="stylesheet" href="./style/slider-style.css">
-    <script defer src="./slider-script.js"></script>
+    <script defer src="./slider-script-v2.js"></script>
 </head>
 
 <body>
@@ -17,7 +17,7 @@
             
             <div class="slides" aria-live="polite">
                 <div class="slides-border noselect">
-                    <div class="slide viewed" role="group" aria-labelledby="item-1-label">
+                    <div class="slide viewed active" role="group" aria-labelledby="item-1-label">
                         <img class="slide-img" src="./img/slide-1.jpg" alt="">
                     </div>
                     <div class="slide" role="group" aria-labelledby="item-2-label">
@@ -51,7 +51,83 @@
                 </div>
             </div>
         </div>
+        <div class="slider" role="region" aria-label="Паттерны">
+            
+            <div class="slides" aria-live="polite">
+                <div class="slides-border noselect">
+                    <div class="slide viewed active" role="group" aria-labelledby="item-1-label">
+                        <img class="slide-img" src="./img/slide-1.jpg" alt="">
+                    </div>
+                    <div class="slide" role="group" aria-labelledby="item-2-label">
+                        <img class="slide-img" src="./img/slide-2.jpg" alt="">
+                    </div>
+                    <div class="slide" role="group" aria-labelledby="item-3-label">
+                        <img class="slide-img" src="./img/slide-3.jpg" alt="">
+                    </div>
+                    <div class="slide" role="group" aria-labelledby="item-4-label">
+                        <img class="slide-img" src="./img/slide-4.jpg" alt="">
+                    </div>
+                </div>
 
+                <div class="controls" role="group" aria-label="Управление слайдами">
+                    <button aria-label="Предыдущий" type="button" class="button button-prev">
+                    </button>
+
+                    <div class="controls-radio">
+                        <button class="button button-radio" type="button" aria-current="true" aria-label="Показать 1 из 4">
+                        </button>
+                        <button class="button button-radio" type="button" aria-label="Показать 2 из 4">
+                        </button>
+                        <button class="button button-radio" type="button" aria-label="Показать 3 из 4">
+                        </button>
+                        <button class="button button-radio" type="button" aria-label="Показать 4 из 4">
+                        </button>
+                    </div>
+    
+                    <button aria-label="Следующий" type="button" class="button button-next">
+                    </button>
+                </div>
+            </div>
+        </div>
+        <div class="slider" role="region" aria-label="Паттерны">
+            
+            <div class="slides" aria-live="polite">
+                <div class="slides-border noselect">
+                    <div class="slide viewed active" role="group" aria-labelledby="item-1-label">
+                        <img class="slide-img" src="./img/slide-1.jpg" alt="">
+                    </div>
+                    <div class="slide" role="group" aria-labelledby="item-2-label">
+                        <img class="slide-img" src="./img/slide-2.jpg" alt="">
+                    </div>
+                    <div class="slide" role="group" aria-labelledby="item-3-label">
+                        <img class="slide-img" src="./img/slide-3.jpg" alt="">
+                    </div>
+                    <div class="slide" role="group" aria-labelledby="item-4-label">
+                        <img class="slide-img" src="./img/slide-4.jpg" alt="">
+                    </div>
+                </div>
+
+                <div class="controls" role="group" aria-label="Управление слайдами">
+                    <button aria-label="Предыдущий" type="button" class="button button-prev">
+                    </button>
+
+                    <div class="controls-radio">
+                        <button class="button button-radio" type="button" aria-current="true" aria-label="Показать 1 из 4">
+                        </button>
+                        <button class="button button-radio" type="button" aria-label="Показать 2 из 4">
+                        </button>
+                        <button class="button button-radio" type="button" aria-label="Показать 3 из 4">
+                        </button>
+                        <button class="button button-radio" type="button" aria-label="Показать 4 из 4">
+                        </button>
+                    </div>
+    
+                    <button aria-label="Следующий" type="button" class="button button-next">
+                    </button>
+                </div>
+            </div>
+        </div>
+        
         <!-- Кнопка продолжить. Изначально заблокирована -->
         <button disabled class="btn-next btn-next-text noselect btn-next_disabled">Продолжить</button>
     </div>

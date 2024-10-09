@@ -1,16 +1,16 @@
 (function () {
   document.addEventListener('DOMContentLoaded', function () {
-    const slider = document.querySelector('.slider');
-    const slides = slider.querySelectorAll('.slide');
-    const activeSlides = 'slide--active';
-    const viewed = 'viewed';
-    const slideCount = slides.length;
-    const controlButtons = slider.querySelectorAll('.button-radio');
-    const prevButton = slider.querySelector('.button-prev');
-    const nextButton = slider.querySelector('.button-next');
-    const activeButton = 'active';
-    const inactiveButton = 'aria-disabled';
-    const currentButton = 'aria-current';
+    let slider = document.querySelectorAll('.slider');
+    let slides = slider.querySelectorAll('.slide');
+    let activeSlides = 'slide--active';
+    let viewed = 'viewed';
+    let slideCount = slides.length;
+    let controlButtons = slider.querySelectorAll('.button-radio');
+    let prevButton = slider.querySelector('.button-prev');
+    let nextButton = slider.querySelector('.button-next');
+    let activeButton = 'active';
+    let inactiveButton = 'aria-disabled';
+    let currentButton = 'aria-current';
     let currentSlide = 0;
     let viewedSliders = [];
     
@@ -51,7 +51,7 @@
       button.addEventListener('click', () => {
         if (index < slideCount) {
           currentSlide = index;
-          updateSlider()
+          updateSlider(idx)
         }
       })
     })
@@ -74,13 +74,13 @@
     slider.addEventListener('keydown', function (event) {
       if (event.key === 'ArrowLeft' && currentSlide > 0) {
         currentSlide--;
-        updateSlider()
+        updateSlider(idx)
       } else if (event.key === 'ArrowRight' && currentSlide < slideCount - 1) {
         currentSlide++;
         updateSlider()
       }
     })
       
-    updateSlider()
+    updateSlider(idx)
   })
 })();
