@@ -1,0 +1,164 @@
+::-webkit-scrollbar {
+    width: 0;
+}
+
+body {
+    scrollbar-gutter: stable;
+    font-family: "Roboto", sans-serif;
+    font-size: 16px;
+    line-height: 1.2;
+    width: 100%;
+    min-height: 100vh;
+    background-color: rgb(232, 232, 255);
+    display: flex;
+    justify-content: center;
+}
+
+.container {
+    background-color: #fff;
+    padding: 30px;
+    max-width: 1000px;
+}
+
+.section {
+    margin-bottom: 56px;
+}
+
+.accordion-title {
+    margin-bottom: 25px;
+}
+
+.tab {
+    width: 100%;
+}
+
+.container .box {
+    display: flex;
+    position: relative;
+    /* Нижний отступ между элементами аккордеона */
+}
+
+.box-red-line {
+    flex-shrink: 0;
+    width: 4px;
+    background-color: red;
+    visibility: hidden;
+}
+
+
+
+.border_red {
+    border-bottom: 1px solid red;
+
+}
+
+.border_red:nth-child(2) {
+    border-top: 1px solid red;
+}
+
+.container .box .label {
+    display: flex;
+    position: relative;
+    padding: 18px;
+    /* Внутренний отступ для видимой части */
+    background-color: white;
+    /* Цвет элемента аккордеона */
+    color: #000;
+    /* Цвет шрифта элемента аккордеона */
+    cursor: pointer;
+    /* Меняем курсор при наведении */
+    align-items: center;
+}
+
+.container .box .label::after {
+    flex-shrink: 0;
+    width: 32px;
+    height: 32px;
+    margin-left: auto;
+    background-image: url(../icon/down.svg);
+    background-repeat: no-repeat;
+    background-size: 32px;
+    content: "";
+}
+
+.container .box.active .label::after {
+    transform: rotate(-180deg);
+    /* Переворачиваем иконку при нажатии на элемент */
+}
+
+.container .box .content {
+    position: relative;
+    background-color: #fff;
+    /* Цвет фона контента */
+    overflow: hidden;
+    max-height: 0;
+    /* Скрываем контент */
+    transition: 0.3s;
+    /* Для плавности анимации */
+    border-top: 0 solid rgba(0, 0, 0, .1);
+}
+
+.container .box .content p {
+    padding: 20px;
+}
+
+/* Стили кнопки "Продолжить" */
+.btn-next {
+    min-width: 187px;
+    min-height: 52px;
+    display: block;
+    margin: 0 auto 26px;
+    padding: 14px 35px;
+    border: 1px solid rgba(0, 0, 0, .2);
+    border-radius: 8px;
+    background-color: rgba(255, 255, 255);
+}
+
+/* Стили для активной кнопки */
+/* Анимация нажатия */
+.btn-next_enabled {
+    cursor: pointer;
+    transition: 0.1s all;
+}
+
+.btn-next_enabled:active {
+    transform: scale(0.99);
+}
+
+/* Реакция при наведении */
+.btn-next_enabled:hover {
+    background-color: rgba(0, 0, 0, .05);
+}
+
+/* Стили для неактивной кнопки */
+.btn-next_disabled {
+    background-color: rgba(28, 26, 26, .15);
+    color: black;
+}
+
+/* Обычный */
+.tab-text-s {
+    font-size: 14px;
+    line-height: 150%;
+}
+
+.tab-text-m {
+    font-size: 16px;
+    line-height: 150%;
+}
+
+.tab-text-l {
+    font-size: 18px;
+    line-height: 150%;
+}
+
+/* Жирный */
+.bold {
+    font-weight: bold;
+}
+
+/* Для кнопки */
+.btn-next-text {
+    font-size: 16px;
+    line-height: 150%;
+}
