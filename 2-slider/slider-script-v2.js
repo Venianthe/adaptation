@@ -2,7 +2,7 @@
     let sliders = document.querySelectorAll('.slider');
     // sliders - список всех элементов с классом class="slider"
     // sliders[0] — первый элемент, sliders[1] — второй, sliders[i] — i-тый.
-    
+
     for (let i = 0; i < sliders.length; i++) {
         // Перебирает все, вызывает функцию для каждого.
         init_slider(sliders[i]);
@@ -17,6 +17,10 @@
         
         let prev = slider.querySelector('.button-prev');
         let next = slider.querySelector('.button-next');
+
+        let controlButtons = slider.querySelectorAll('.button-radio');
+        let activeButton = 'active';
+        let currentButton = 'aria-current';
         
         let currentSlide = 0;
         // Номер текущего "открытого" слайда.
@@ -40,6 +44,16 @@
                 buttonNext.classList.add('btn-next_enabled');
                 buttonNext.removeAttribute('disabled', '');
             }
+
+            controlButtons.forEach((button, index) => {
+                if (index === currentSlide) {
+                  button.classList.add(activeButton);
+                  button.setAttribute(currentButton, true);
+                } else {
+                  button.classList.remove(activeButton);
+                  button.removeAttribute(currentButton, true);
+                }
+            });
         });  
         
         prev.addEventListener('click', function() {
@@ -51,7 +65,18 @@
             slide[currentSlide].classList.add('active');
             slide[currentSlide].classList.add('viewed');
             // Предыдущий слайд. Показываем.
+            
+            controlButtons.forEach((button, index) => {
+                if (index === currentSlide) {
+                  button.classList.add(activeButton);
+                  button.setAttribute(currentButton, true);
+                } else {
+                  button.classList.remove(activeButton);
+                  button.removeAttribute(currentButton, true);
+                }
+            });
         });
+
     }
     
 })();
