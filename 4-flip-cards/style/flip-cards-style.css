@@ -1,0 +1,215 @@
+* {
+  font-family: Arial, Helvetica, sans-serif;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  width: 100%;
+  min-height: 100vh;
+}
+
+.card-flip-block {
+  margin-bottom: 10px;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+}
+
+.card-flip {
+  margin: 20px 20px 20px 0;
+  width: 400px;
+  height: 470px;
+  perspective: 1000px;
+  flex-grow: 0;
+  flex-shrink: 0;
+  flex-basis: 30%;
+}
+
+.card-flip:nth-child(-n+3) {
+  margin-top: 0;
+}
+
+.card-flip:nth-child(3n) {
+  margin-right: 0;
+}
+
+.card-flip-content {
+  width: 100%;
+  height: 100%;
+  transition: transform 1s;
+  transform-style: preserve-3d;
+  position: relative;
+}
+
+.card-flip-content.is-flipped {
+  transform: rotateY(180deg);
+}
+
+.card-flip-inside {
+  display: flex;
+  flex-direction: column;
+  justify-content: start;
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  -webkit-backface-visibility: hidden;
+  backface-visibility: hidden;
+  overflow: hidden;
+  border-radius: 16px;
+  box-shadow: 0px 3px 18px 3px rgba(0, 0, 0, 0.2);
+}
+
+.card-flip-inside--front {
+  display: flex;
+}
+
+.card-flip-inside--front h2 {
+  font-size: 32px;
+}
+
+.card-flip-inside--back {
+  transform: rotateY(180deg);
+}
+
+.card-flip-back-content {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  height: 100%;
+}
+
+.container {
+  background-color: #fff;
+  padding: 30px;
+  max-width: 1000px;
+  margin: 0 auto;
+}
+
+.section {
+  margin-bottom: 56px;
+}
+
+.flip-title {
+  margin-bottom: 25px;
+}
+
+.flip-card--image {
+  margin-bottom: 25px;
+  width: 100%;
+  height: 225px;
+  background-image: url(../images/image-1.jpg);
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+.padding-20-20-40 {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  padding: 20px 20px 40px;
+}
+
+.flip-card-content-block {
+  position: relative;
+}
+
+.flip-card--title {
+  margin-bottom: 10px;
+  font-size: 16px;
+  font-weight: 700;
+  line-height: 150%;
+}
+
+.flip-card--text {
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 150%;
+  color: var(--grey-2, #69696C);
+}
+
+.btn-revers {
+  display: block;
+  margin: 20px auto;
+  width: 52px;
+  height: 52px;
+  background-color: #fff;
+  border: none;
+  cursor: pointer;
+}
+
+.revers-front {
+  background-image: url(../icons/button-revers-front.svg);
+  background-repeat: no-repeat;
+}
+
+.revers-back {
+  background-image: url(../icons/button-revers-back.svg);
+  background-repeat: no-repeat;
+}
+
+
+/* Стили кнопки "Продолжить" */
+.btn-next {
+  min-width: 187px;
+  min-height: 52px;
+  display: block;
+  margin: 0 auto 26px;
+  padding: 14px 35px;
+  border: 1px solid rgba(0, 0, 0, .2);
+  border-radius: 8px;
+  background-color: rgba(255, 255, 255);
+}
+
+/* Стили для активной кнопки */
+/* Анимация нажатия */
+.btn-next_enabled {
+  transition: 0.1s all;
+}
+
+.btn-next_enabled:active {
+  transform: scale(0.99);
+}
+
+/* Реакция при наведении */
+.btn-next_enabled:hover {
+  background-color: rgba(0, 0, 0, .05);
+}
+
+/* Стили для неактивной кнопки */
+.btn-next_disabled {
+  background-color: rgba(28, 26, 26, .15);
+  color: black;
+}
+
+/* Обычный */
+.text-s {
+  font-size: 14px;
+  line-height: 150%;
+}
+
+.text-m {
+  font-size: 16px;
+  line-height: 150%;
+}
+
+.text-l {
+  font-size: 30px;
+  line-height: 150%;
+}
+
+/* Жирный */
+.bold {
+  font-weight: bold;
+}
+
+/* Для кнопки */
+.btn-next-text {
+  font-size: 16px;
+  line-height: 150%;
+}
+
+.red-text {
+  color: var(--red, #E9262D);
+}
