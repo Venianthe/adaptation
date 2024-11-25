@@ -73,38 +73,40 @@
         
         
         // по каждому вопросу...
-        myQuestions.forEach(
-            (currentQuestion, questionNumber) => {
+         document.querySelector('.js-title-question').innerHTML =  myQuestions[currentSlide].question
+         
+        // myQuestions.forEach(
+        //     (currentQuestion, questionNumber) => {
     
-                // переменная для хранения списка возможных ответов
-                const answers = [];
+        //         // переменная для хранения списка возможных ответов
+        //         const answers = [];
         
-                // и для каждого доступного ответа...
-                for (letter in currentQuestion.answers){
+        //         // и для каждого доступного ответа...
+        //         for (letter in currentQuestion.answers){
     
-                    // ...добавляем переключатель в формате HTML
-                    answers.push(
-                        `<label class="quiz-answer-container">
-                            <div class="quiz-answer">
-                                <input class="quiz-radio" type="radio" name="question${questionNumber}" value="${letter}"/>
-                                ${currentQuestion.answers[letter]}
-                            </div>
-                        </label> 
-                        `
-                    );
+        //             // ...добавляем переключатель в формате HTML
+        //             answers.push(
+        //                 `<label class="quiz-answer-container">
+        //                     <div class="quiz-answer">
+        //                         <input class="quiz-radio" type="radio" name="question${questionNumber}" value="${letter}"/>
+        //                         ${currentQuestion.answers[letter]}
+        //                     </div>
+        //                 </label> 
+        //                 `
+        //             );
                     
-                }
+        //         }
                 
-                // добавляем этот вопрос и ответы на него в выходные данные
-                output.push(
-                    `<div class="quiz-slide">
-                    <div class="quiz-question"> ${currentQuestion.question} </div>
-                    <div class="quiz-answers"> ${answers.join("")} </div>
-                    </div>`
-                );
+        //         // добавляем этот вопрос и ответы на него в выходные данные
+        //         output.push(
+        //             `<div class="quiz-slide">
+        //             <div class="quiz-question"> ${currentQuestion.question} </div>
+        //             <div class="quiz-answers"> ${answers.join("")} </div>
+        //             </div>`
+        //         );
                 
-            }
-        );
+        //     }
+        // );
   
         
         
@@ -176,7 +178,8 @@
             if(idx == currentSlide) {
                 item.classList.add('quiz-active-slide');
             } 
-        });
+        })
+
         currentSlide++
         // console.log(slides[currentSlide + 1]);
         
