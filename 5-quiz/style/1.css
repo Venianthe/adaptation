@@ -1,0 +1,235 @@
+body {
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+.container {
+    max-width: 1000px;
+    margin: 0 auto;
+}
+
+.section {
+    padding: 80px 30px 30px;
+}
+
+/* Стили заголовка и описания */
+.section-title {
+    margin: 0;
+    margin-bottom: 30px;
+}
+
+.section-text {
+    margin: 0;
+    margin-bottom: 30px;
+}
+
+/* Стили списка с требованиями */
+.quiz-description {
+    margin: 0;
+    margin-bottom: 40px;
+    padding: 15px;
+    list-style: none;
+    background-color: #FFEFE0;
+    border-radius: 10px;
+}
+
+.description-text {
+    margin: 0;
+}
+
+.description-text::before {
+    margin-right: 10px;
+    color: red;
+    content: "—";
+}
+
+/* Стили кнопки "Начать" */
+.btn-start {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    height: 64px;
+    border-radius: 10px;
+    border-color: rgb(0, 0, 0, 0);
+    cursor: pointer;
+}
+
+.red-background {
+    background-color: red;
+    color: white;
+}
+
+.btn-text {
+    margin: 0;
+    display: flex;
+    position: relative;
+    align-items: center;
+    
+}
+
+.btn-text::after {
+    flex-shrink: 0;
+    width: 32px;
+    height: 32px;
+    margin-left: 15px;
+    background-image: url(../icon/Arrow.svg);
+    background-repeat: no-repeat;
+    background-size: 32px;
+    content: "";
+}
+
+    /* Анимация нажатия */
+.btn-start-enabled {
+    transition: 0.1s all;
+}
+    
+.btn-start-enabled:active {
+    transform: scale(0.99);
+}
+    
+    /* Реакция при наведении */
+.btn-start-enabled:hover {
+    background-color: rgb(211, 0, 0);
+}
+
+.btn-text:hover {
+    fill: red;
+}
+
+.hidden {
+    display: none;
+}
+
+/* Стили слайдера - Квиз */
+.quiz-container {
+    position: relative;
+}
+
+.quiz-slide {
+    display: none;
+    margin-bottom: 20px;
+    width: 100%;
+}
+
+.quiz-question {
+    margin-bottom: 30px;
+}
+
+.quiz-answers {
+    text-align: left;
+    display: block;
+    width: 724px;
+    border-bottom: 1px solid rgba(96, 105, 129, .15);
+    border-top: 1px solid rgba(96, 105, 129, .15);
+}
+
+.quiz-answer-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    height: 54px;
+    border-bottom: 1px solid rgba(96, 105, 129, .15);
+    cursor: pointer;
+}
+
+.quiz-answer-container:last-child {
+    border: none;
+}
+
+.quiz-answer {
+    margin: 0;
+    width: fit-content;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.quiz-active-slide {
+    display: inline-block;
+}
+
+.quiz-radio {
+    margin-right: 15px;
+    width: 20px;
+    height: 20px;
+    accent-color: red;
+    cursor: pointer;
+}
+
+/* Кнопка Следующий поврос */
+.btn-next {
+    min-width: 187px;
+    min-height: 52px;
+    display: block;
+    margin: 56px auto 26px;
+    padding: 14px 35px;
+    border: 1px solid rgba(0, 0, 0, .2);
+    border-radius: 8px;
+    background-color: rgba(255, 255, 255);
+    cursor: pointer;
+}
+
+/* Стили для активной кнопки */
+    /* Анимация нажатия */
+.btn-next-enabled {
+    transition: 0.1s all;
+}
+
+.btn-next-enabled:active {
+    transform: scale(0.99);
+}
+
+    /* Реакция при наведении */
+.btn-next-enabled:hover {
+    background-color: rgba(0, 0, 0, .05);
+}
+
+/* Стили для неактивной кнопки */
+.btn-next-disabled {
+    background-color: rgba(28, 26, 26, .15);
+    color: black;
+    cursor: default;
+}
+
+/* шрифты */
+.text-h1 {
+    font-size: 38px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: 50px;
+}
+
+.text-h2 {
+    font-size: 30px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: 40px;    
+}
+
+.text-h4 {
+    font-size: 18px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: 26px;
+}
+
+.text-b2 {
+    font-size: 18px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 26px;
+}
+
+.text-b3 {
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 24px;
+}
+
+.text-b4 {
+    font-size: 14px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 20px; 
+}

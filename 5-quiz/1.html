@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="ru">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Тестирование</title>
+    <link rel="stylesheet" href="./style/normalize.css">
+    <link rel="stylesheet" href="./style/1.css">
+    <script defer src="./1.js"></script>
+</head>
+
+<body>
+    <div class="container">
+        <section class="section" id="cover">
+            <h1 class="section-title text-h1">Тестирование</h1>
+            <p class="section-text text-b2">Осталось пройти небольшой тест, который покажет, как хорошо ты усвоил
+                материал</p>
+            <ul class="quiz-description">
+                <li class="description-text text-b3">Для успешного прохождения нужно правильно ответить минимум на 7
+                    вопросов из 10</li>
+                <li class="description-text text-b3">На прохождение теста дается 3 попытки</li>
+            </ul>
+            <button active class="btn-start red-background btn-start-enabled">
+                <p class="btn-text text-h4">Начать</p>
+            </button>
+        </section>
+
+        <section class="section hidden" id="quiz">
+            <h2 class="section-title text-h1">Тестирование</h2>
+            <div class="quiz-container">
+                <div class="quiz"></div>
+            </div>
+            <button disabled class="btn-next btn-next-disabled next">Следующий вопрос</button>
+            <button class="btn-next submit">Показать результат</button>
+        </section>
+
+        <section class="section hidden" id="results">
+            <h2 class="section-title text-h1">Результаты тестирования</h2>
+            <div class="user-name-date">
+                <span class="user-name text-b4">Константин Константинопольский</span>
+                <span class="user-date text-b4">20.01.2020</span>
+            </div>
+            <div class="results">
+                <div class="this-result">
+                    <h4 class="results-title text-b4">Результаты 1-ой попытки</h4>
+                    <div class="container-number">
+                        <span class="result-ratio text-h2">6/10</span>
+                        <span class="result-percent text-h2">60%</span>
+                    </div>
+                </div>
+                <div class="best-result">
+                    <h4 class="best-title text-b4">Лучший результат</h4>
+                    <div class="container-number">
+                        <span class="best-percent">60%</span>
+                    </div>
+                </div>
+            </div>
+
+            <p class="result-feedback text-b2">Не очень</p>
+            <button class="btn-next quiz-repeat"><span class="btn-repeat text-b4">Повторить тест</span></button>
+        </section>
+    </div>
+</body>
+
+</html>
