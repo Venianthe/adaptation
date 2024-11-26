@@ -6,48 +6,61 @@
     const sectionResults= document.getElementById('results');
     const quizContainer = document.querySelector('.quiz');
     const submitButton = document.querySelector('.submit');
-    const resultsContainer = document.querySelector('.result-ratio');
+    const resultsRatio = document.querySelector('.result-ratio');
+    const resultsPercent = document.querySelector('.result-percent');
     const buttonRepeatQuiz = document.querySelector('.quiz-repeat');
-     
+    const bestResultsContainer = document.querySelector('.best-percent');
+    const resultFeedback = document.querySelector('.result-feedback');
+    const requestTitle = document.querySelector('.results-title');
+    const userName = document.querySelector('.user-name');
+    const currentUserName = 'Константин Константинопольский';
+    const userDate = document.querySelector('.user-date');
+    let bestResults = 0;
+    const maxRepeatQuiz = 3;
+    const minRequiredPercent = 80;
+    const goodFeedbackQuiz = 'Текст-комментарий для положительного результата';
+    const badFeedbackQuiz = 'Не очень хороший результат, рекомендуем изучить курс еще раз.';
+
+    
     const myQuestions = [
-      {
-        question: "Кто ты?",
-        answers: {
-          a: "Человек",
-          b: "Баран",
-          c: "Арёль"
-        },
+        {
+            question: "Кто ты?",
+            answers: {
+                a: "Человек",
+                b: "Баран",
+                c: "Арёль"
+            },
         correctAnswer: "a"
       },
       {
-        question: "Зачем ты тут сидишь?",
-        answers: {
-          a: "Смотрю в потолок",
-          b: "Ищу смысл жизни",
-          c: "Это не я, я - котик-енотик"
+          question: "Зачем ты тут сидишь?",
+          answers: {
+              a: "Смотрю в потолок",
+              b: "Ищу смысл жизни",
+              c: "Это не я, я - котик-енотик"
+            },
+            correctAnswer: "a"
         },
-        correctAnswer: "a"
-      },
-      {
-        question: "Где енотовые нямки?",
-        answers: {
-          a: "Енот съел",
-          b: "Я не ел",
-          c: "Ещё не привезли",
-          d: "Что это такое?"
+        {
+            question: "Где енотовые нямки?",
+            answers: {
+                a: "Енот съел",
+                b: "Я не ел",
+                c: "Ещё не привезли",
+                d: "Что это такое?"
+            },
+            correctAnswer: "b"
         },
-        correctAnswer: "b"
-      },
-      {
-        question: "А если найду?",
-        answers: {
-            a: "Упс!",
-            b: "Упс...",
+        {
+            question: "А если найду?",
+            answers: {
+                a: "Упс!",
+                b: "Упс...",
             c: "Ну ты и Арёль..!"
         },
         correctAnswer: "c"
-      },
-      {
+    },
+    {
         question: "А если НЕ найду?",
         answers: {
             a: "Гггг!",
@@ -55,19 +68,20 @@
             c: "Ну ты и Арёль..!"
         },
         correctAnswer: "c"
-      }
-    ];
-
-    // Функции
-
-    // Скрыть 1 модуль (Cover), отобразить 2 модуль (Quiz)
-    function nextSection() {
-            sectionCover.classList.add('hidden');
-            sectionQuiz.classList.remove('hidden');
     }
-      
-        
-    function buildQuiz() {
+];
+
+// Функции
+
+// Скрыть 1 модуль (Cover), отобразить 2 модуль (Quiz)
+function nextSection() {
+    sectionCover.classList.add('hidden');
+    sectionQuiz.classList.remove('hidden');
+    console.log(currentRepeatQuiz);
+}
+
+
+function buildQuiz() {
         // переменная для хранения выходных данных HTML
         const output = [];
         
@@ -75,20 +89,20 @@
         // по каждому вопросу...
         myQuestions.forEach(
             (currentQuestion, questionNumber) => {
-    
+                
                 // переменная для хранения списка возможных ответов
                 const answers = [];
-        
+                
                 // и для каждого доступного ответа...
                 for (letter in currentQuestion.answers){
-    
+                    
                     // ...добавляем переключатель в формате HTML
                     answers.push(
                         `<label class="quiz-answer-container">
-                            <div class="quiz-answer">
-                                <input class="quiz-radio" type="radio" name="question${questionNumber}" value="${letter}"/>
-                                ${currentQuestion.answers[letter]}
-                            </div>
+                        <div class="quiz-answer">
+                        <input class="quiz-radio js-quiz-cleaner" type="radio" name="question${questionNumber}" value="${letter}"/>
+                        ${currentQuestion.answers[letter]}
+                        </div>
                         </label> 
                         `
                     );
@@ -105,14 +119,14 @@
                 
             }
         );
-  
+        
         
         
         
         // объединяем выходной список в одну строку HTML и размещаем ее на странице
         quizContainer.innerHTML = output.join('');
     }
-  
+    const gridForUpdate = document.querySelector('.results');
     // Скрыть 3 модуль (Results), отобразить 1 модуль (Cover)
     function repeatQuiz () {
         sectionCover.classList.remove('hidden');
@@ -121,69 +135,150 @@
         const bestResults = document.querySelector('.best-result');
         // Показываем лучший результат после нажатия "Повторить тест"
         bestResults.classList.remove('hidden');
-        // cleanSlider();
-        currentSlide = 0;
-
-        buildQuiz();
-        
-        showSlide();
-        
-        
+        gridForUpdate.classList.remove('grid-one-column');
+        cleanSlider();
+        cleanActiveAnswears();
+        attemptСounter();
     } 
     
+    let currentRepeatQuiz = 1;
+    // Счетчик прохождений
+    function attemptСounter () {
+        currentRepeatQuiz++;
+    }
+    
+    // Отобразить результаты
     function showResults() {
         // Скрыть 2 модуль (Quiz), отобразить 3 модуль (Results)
         sectionQuiz.classList.add('hidden');
         sectionResults.classList.remove('hidden');
-
+        
         // собираем контейнеры с ответами из викторины
         const answerContainers = quizContainer.querySelectorAll('.quiz-answers');
-    
+        
         // следим за ответами пользователей
         let numCorrect = 0;
-    
+        
         // по каждому вопросу...
         myQuestions.forEach( (currentQuestion, questionNumber) => {
-  
+            
             // найти выбранный ответ
             const answerContainer = answerContainers[questionNumber];
             const selector = `input[name=question${questionNumber}]:checked`;
             const userAnswer = (answerContainer.querySelector(selector) || {}).value;
             
-    
+            
             // если ответ правильный
             if(userAnswer === currentQuestion.correctAnswer){
                 // увеличить количество правильных ответов
                 numCorrect++;
             }
         });
-  
-        // показать количество правильных ответов от общего числа
-        resultsContainer.innerHTML = `${numCorrect} из ${myQuestions.length}`;
-    }
-  
-    function showSlide() {
-
         
-       
+        // Корректируем окончание -ей/-ой
+        function updateCounterRequest () {
+            if (currentRepeatQuiz !== 3) {
+                requestTitle.innerHTML = `Результат ${currentRepeatQuiz}-ой попытки`;
+            } else {
+                requestTitle.innerHTML = `Результат ${currentRepeatQuiz}-ей попытки`;
+            }
+        }
 
-        // slides[currentSlide].classList.remove('quiz-active-slide');
+        function updateName () {
+            userName.innerHTML = currentUserName;
+        }
 
-        // slides[currentSlide + 1].classList.add('quiz-active-slide');
+        // Приводим дату к виду ДД.ММ.ГГГГ
+        function formatDate(date) {
 
+            let dd = date.getDate();
+            if (dd < 10) dd = '0' + dd;
+          
+            let mm = date.getMonth() + 1;
+            if (mm < 10) mm = '0' + mm;
+          
+            let yy = date.getFullYear() % 100;
+            if (yy < 10) yy = '0' + yy;
+          
+            return dd + '.' + mm + '.' + yy;
+        }
+
+        // Обновляем текущую дату
+        function updateDate () {
+            let currentDate = new Date();
+            let normFormatDate = formatDate(currentDate);
+            userDate.innerHTML = normFormatDate;
+        }
+
+        // вызываем функцию для отображения корректных данных
+        function updateCurrentInfo () {
+            updateCounterRequest();
+            updateName();
+            updateDate();
+        }
+
+        updateCurrentInfo();
+
+        // показать количество правильных ответов от общего числа
+        resultsRatio.innerHTML = `${numCorrect} / ${myQuestions.length}`;
+        
+        let percentCorrect = 0;
+        function ratioToPersent (current, max) {
+            let percent = current / max * 100;
+            percentCorrect = percent;
+        }
+        ratioToPersent(numCorrect,myQuestions.length);
+        resultsPercent.innerHTML = `${percentCorrect}%`;
+        
+        if (percentCorrect > bestResults) {
+            bestResults = percentCorrect;
+        }
+        
+        bestResultsContainer.innerHTML = `${bestResults}%`;
+
+        if (currentRepeatQuiz >= maxRepeatQuiz) {
+            buttonNextDisabled();
+            buttonRepeatQuiz.style.display = 'none';
+        }
+
+        if (percentCorrect >= minRequiredPercent) {
+            buttonRepeatQuiz.style.display = 'none';
+            goodFeedback();
+        } else {
+            badFeedback();
+        }
+    }
+    
+    function goodFeedback () {
+        resultFeedback.innerHTML = goodFeedbackQuiz;
+        resultsRatio.style.color = 'green';
+        resultsPercent.style.color = 'green';
+        bestResultsContainer.style.color = 'green';
+        
+    }
+    
+    function badFeedback () {
+        resultFeedback.innerHTML = badFeedbackQuiz;
+        resultsRatio.style.color = 'red';
+        resultsPercent.style.color = 'red';
+        bestResultsContainer.style.color = '#69696C';
+    }
+
+    // Скрыть текущий вопрос, отобразить следующий
+    function toggleActivSlide () {
         slides.forEach((item, idx) => {
             item.classList.remove('quiz-active-slide');
             if(idx == currentSlide) {
                 item.classList.add('quiz-active-slide');
             } 
         });
-        currentSlide++
-        // console.log(slides[currentSlide + 1]);
-        
-        
-        // currentSlide = n;
+        currentSlide++;
+    }
 
-        if (currentSlide === slides.length-1) {
+    function showSlide() {
+        toggleActivSlide();
+        
+        if (currentSlide === slides.length) {
             nextButton.style.display = 'none';
             submitButton.style.display = 'inline-block';
         } else {
@@ -196,7 +291,8 @@
   
     // Показать следующий вопрос
     function showNextSlide() {
-        showSlide(currentSlide + 1);
+        showSlide();
+        
     }
 
     // Сделать кнопку "Следующий вопрос" активной
@@ -227,21 +323,29 @@
         quizQuestionTextStyle.classList.add('text-b2');
     }
   
-    // Начать все сначала
+    // Создать "вопросник"
     buildQuiz();
   
     // Пагинация
     const nextButton = document.querySelector(".next");
     const slides = document.querySelectorAll(".quiz-slide");
-    let slide = document.querySelector('.quiz-slide');
+    const activeAnswears = document.querySelectorAll('.js-quiz-cleaner');
     let currentSlide = 0;
   
     // Показать первый слайд
     showSlide();
 
+    // Очистить все ответы в тесте
+    function cleanActiveAnswears () {
+        activeAnswears.forEach((item) => {
+            item.checked = false;
+        })
+    }
+
+    // Сбросить тестирование
     function cleanSlider () {
         currentSlide = 0;
-        showSlide(0);
+        showSlide();
     }
     
     const activeSlide = document.querySelectorAll('.quiz-answers');

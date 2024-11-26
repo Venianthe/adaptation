@@ -97,7 +97,11 @@ body {
 }
 
 .hidden {
-    display: none;
+    display: none !important
+}
+
+.grid-one-column {
+    grid-template-columns: 1, 1fr !important
 }
 
 /* Стили слайдера - Квиз */
@@ -156,7 +160,54 @@ body {
     cursor: pointer;
 }
 
-/* Кнопка Следующий поврос */
+/* Результаты */
+.results {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    grid-gap: 20px;
+}
+
+.this-result {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 30px;
+    padding: 30px;
+    background-color: lightgray;
+    border-radius: 15px 15px 15px 15px;
+}
+
+.results-title {
+    margin: 0;
+    margin-bottom: 5px;
+}
+
+.best-title {
+    margin: 0;
+    margin-bottom: 5px;
+}
+
+.best-result {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 30px;
+    padding: 30px;
+    background-color: lightgray;
+    border-radius: 15px 15px 15px 15px;
+}
+
+.user-name-date {
+    margin-bottom: 10px;
+}
+
+.result-ratio {
+    margin-right: 25px;
+}
+
+/* Кнопка Следующий вопрос */
 .btn-next {
     min-width: 187px;
     min-height: 52px;
